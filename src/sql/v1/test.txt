@@ -1,0 +1,8 @@
+'ROW("IPD1", 127.0.0.1, 32), ROW("IPT2", 192.168.1.1, 11)',
+'ROW("POD1", 22, 23), ROW("POD2", 23, 24)',
+'ROW("FLD1", "FLAW1", "www.baidu.com"), ROW("FLD2", "FLAW2", "www.littlecontrol.io")',
+'ROW("WPD1", "WEAK1", "www.baidu.com"), ROW("WPD2", "WEAK2", "www.littlecontrol.io")',
+'ROW("POCD1", "POCT1", "www.baidu.com"), ROW("POCD2", "POCT2", "www.littlecontrol.io")',
+'ROW("EXPD1", "EXPT1", "www.baidu.com"), ROW("EXPD2", "EXPT2", "www.littlecontrol.io")',
+'ROW("VEND1", "Google", 32), ROW("VEND2" "Apple", 23)',
+'ROW("OSD1", "Linux", 66), ROW("OSD2", "Windows", 45)'
