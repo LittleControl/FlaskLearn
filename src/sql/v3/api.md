@@ -1,0 +1,33 @@
+# v3
+
+- tags
+  - flaw_count
+  - weak_pawd_count
+  - ver_success
+  - use_success
+- assets
+  - switch
+  - industrial
+  - lot
+  - other
+- mids
+  - ip_data
+  - port_data
+  - flaw_data
+  - weak_pawd_data
+  - poc_data
+  - exp_data
+  - vendor_data
+  - os_data
+- apps
+  - target
+  - port
+  - service
+  - vendor
+  - os
+  - equipment
+  - weakpasswd
+  - loophole
+  - poc
+  - my_exp
+  - operate
