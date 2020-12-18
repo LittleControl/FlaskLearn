@@ -7,17 +7,24 @@ CREATE TABLE main_user (
     os varchar(32),
     equip_type varchar(64),
     asset int,
-    operate varchar(32),
+    weakpawd_count int,
     bug_count int,
-    weak_pawd_count int,
     poc_count int,
-    exp_count int
+    exp_count int,
+    operate varchar(32)
 );
-CREATE TABLE weak_pawd_table (
+CREATE TABLE weakpawd_table (
     id serial PRIMARY KEY,
     ip varchar(32),
     username varchar(32),
     passwd varchar(64)
+);
+CREATE TABLE bug_table (
+    id serial PRIMARY KEY,
+    bug_level int,
+    bug_name varchar(64),
+    bug_class varchar(32),
+    bug_type varchar(32)
 );
 CREATE TABLE poc_table (
     id serial PRIMARY KEY,
@@ -26,10 +33,10 @@ CREATE TABLE poc_table (
     poc_type varchar(64),
     poc_vendor varchar(64)
 );
-CREATE TABLE bug_table (
+CREATE TABLE exp_table (
     id serial PRIMARY KEY,
-    bug_level int,
-    bug_name varchar(64),
-    bug_class varchar(32),
-    bug_type varchar(32)
+    risk_level int,
+    exp_name varchar(64),
+    exp_type varchar(64),
+    exp_vendor varchar(64)
 );

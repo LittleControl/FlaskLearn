@@ -19,17 +19,15 @@ class Main_user(Base):
     asset = Column(Integer)
     operate = Column(String(32))
     bug_count = Column(Integer)
-    weak_pawd_count = Column(Integer)
+    weakpawd_count = Column(Integer)
     poc_count = Column(Integer)
     exp_count = Column(Integer)
-
-class Weak_pawd_table(Base):
-    __tablename__ = 'weak_pawd_table'
+class Weakpawd_table(Base):
+    __tablename__ = 'weakpawd_table'
     id = Column(Integer, primary_key = True)
     ip = Column(String(32))
     username = Column(String(32))
     passwd = Column(String(64))
-
 class Poc_table(Base):
     __tablename__ = 'poc_table'
     id = Column(Integer, primary_key = True)
@@ -37,7 +35,13 @@ class Poc_table(Base):
     poc_name = Column(String(64))
     poc_type = Column(String(64))
     poc_vendor = Column(String(64))
-
+class Exp_table(Base):
+    __tablename__ = 'exp_table'
+    id = Column(Integer, primary_key = True)
+    risk_level = Column(Integer)
+    exp_name = Column(String(64))
+    exp_type = Column(String(64))
+    exp_vendor = Column(String(64))
 class Bug_table(Base):
     __tablename__ = 'bug_table'
     id = Column(Integer, primary_key = True)
@@ -50,18 +54,11 @@ engine = create_engine('postgresql+psycopg2://' + POSTGRES_USERNAME + ':' + POST
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
 
-# res = session.query(Main_user.ip).count()
-# print res
-
-# statis = session.query(func.sum(Main_user.bug_count)).scalar()
-# print statis
-# print type(statis)
-
 def tagQuery():
     session = DBSession()
     tags = {}
     tags['bug_count'] = session.query(func.sum(Main_user.bug_count)).scalar()
-    tags['weakpawd_count'] = session.query(func.sum(Main_user.weak_pawd_count)).scalar()
+    tags['weakpawd_count'] = session.query(func.sum(Main_user.weakpawd_count)).scalar()
     tags['poc_count'] = session.query(func.sum(Main_user.poc_count)).scalar()
     tags['exp_count'] = session.query(func.sum(Main_user.exp_count)).scalar()
     session.close()
@@ -164,18 +161,77 @@ def midQuery():
     return mids
 
 def appQuery():
+    session = DBSession()
     apps = []
-    
+    weakpawd_data = []
+    poc_data = []
+    bug_data = []
+    exp_data = []
+    tempQuery = session.query(Weakpawd_table).all()
+    for item in tempQuery:
+        weakpawd_data.append({
+            'id': item.id,
+            'ip': item.ip,
+            'username': item.username,
+            'passwd': item.passwd
+        })
+    tempQuery = session.query(Poc_table).all()
+    for item in tempQuery:
+        poc_data.append({
+            'id': item.id,
+            'risk_level': item.risk_level,
+            'poc_name': item.poc_name,
+            'poc_type': item.poc_type,
+            'poc_vendor': item.poc_vendor
+        })
+    tempQuery = session.query(Bug_table).all()
+    for item in tempQuery:
+        bug_data.append({
+            'id': item.id,
+            'bug_level': item.bug_level,
+            'bug_class': item.bug_class,
+            'bug_type': item.bug_type
+        })
+    tempQuery = session.query(Exp_table).all()
+    for item in tempQuery:
+        exp_data.append({
+            'id': item.id,
+            'risk_level': item.risk_level,
+            'exp_name': item.exp_name,
+            'exp_type': item.exp_type,
+            'exp_vendor': item.exp_vendor
+        })
+    tempQuery = session.query(Main_user).all()
+    for item in tempQuery:
+        tempDict = {}
+        tempDict['id'] = item.id
+        tempDict['ip'] = item.ip
+        tempDict['port'] = item.port
+        tempDict['service_name'] = item.service_name
+        tempDict['vendor'] = item.vendor
+        tempDict['os'] = item.os
+        tempDict['equip_type'] = item.equip_type
+        tempDict['weakpawd_count'] = {'type': 'weakpawd', 'text': item.weakpawd_count, 'data': weakpawd_data}
+        tempDict['bug_count'] = {'type': 'bug', 'text': item.bug_count, 'data': bug_data }
+        tempDict['poc_count'] = {'type': 'poc', 'text': item.poc_count, 'data': poc_data}
+        tempDict['exp_count'] = {'type': 'exp', 'text': item.exp_count, 'data': exp_data}
+        tempDict['operate'] = {'type': 'operate', 'text': item.operate}
+        apps.append(tempDict)
+
+    session.close()
+    return apps
 
 # print tagQuery()
 # print assetQuery()
 # print midQuery()
+# print appQuery()
 
 def data():
     data = {}
     data['tags'] = tagQuery()
     data['assets'] = assetQuery()
     data['mids'] = midQuery()
+    data['apps'] = appQuery()
     # print data['mids']['port_data']
     return data
 
