@@ -1,6 +1,6 @@
 import psycopg2
 from flask import Flask, escape, url_for, request, abort
-from utils.alchemy_test import data
+from utils.alchemy_test import ccenter_data, tdetect_data
 
 app = Flask(__name__)
 
@@ -11,10 +11,17 @@ def index():
 	return 'Index Page'
 
 @app.route('/api/controlcenter')
-def test():
+def ccenter():
 	res = {}
 	res['success'] = True
-	res['data'] = data()
+	res['data'] = ccenter_data()
+	return res
+
+@app.route('/api/targetdetection')
+def tdetec():
+	res = {}
+	res['success'] = True
+	res['data'] = tdetect_data()
 	return res
 
 @app.route('/nothing')

@@ -6,7 +6,6 @@ CREATE TABLE main_user (
     vendor varchar(64),
     os varchar(32),
     equip_type varchar(64),
-    asset int,
     weakpawd_count int,
     bug_count int,
     poc_count int,

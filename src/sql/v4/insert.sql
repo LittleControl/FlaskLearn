@@ -1,31 +1,31 @@
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    '127.0.0.1', 22, 'SSH', 'Google', 'CentOS', '服务器', 23, '详情',
+    '127.0.0.1', 22, 'SSH', 'Google', 'CentOS', '服务器', '详情',
     23, 34, 23, 23
 );
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    '127.0.0.1', 80, 'HTTP', 'Apple', 'Ubuntu', '云服务器资源', 32, '详情',
+    '127.0.0.1', 80, 'HTTP', 'Apple', 'Ubuntu', '云服务器资源', '详情',
     12, 34, 56, 78
 );
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    '56.56.56.78', 80, 'HTTP', 'Apple', 'Ubuntu', '物联网设备', 34, '详情',
+    '56.56.56.78', 80, 'HTTP', 'Apple', 'Ubuntu', '物联网设备', '详情',
     12, 34, 56, 78
 );
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    '192.168.1.1', 443, 'HTTPS', 'Tencent', 'CentOS', '物联网设备', 43, '详情',
+    '192.168.1.1', 443, 'HTTPS', 'Tencent', 'CentOS', '物联网设备', '详情',
     23, 34, 23, 23
 );
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    'www.google.com', 21, 'FTP', 'Google', 'ArchLinux', '交换路由设备', 23, '详情',
+    'www.google.com', 21, 'FTP', 'Google', 'ArchLinux', '交换路由设备', '详情',
     23, 34, 23, 23
 );
-INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, asset, operate, bug_count, weakpawd_count, poc_count, exp_count)
+INSERT INTO main_user (ip, port, service_name, vendor, os, equip_type, operate, bug_count, weakpawd_count, poc_count, exp_count)
 VALUES (
-    'www.littlecontrol.io', 22, 'SSH', 'LittleControl', 'ArchLinux', '工业控制设备', 23, '详情',
+    'www.littlecontrol.io', 22, 'SSH', 'LittleControl', 'ArchLinux', '工业控制设备', '详情',
     23, 34, 23, 23
 );
 
