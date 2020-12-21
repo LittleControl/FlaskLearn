@@ -16,7 +16,6 @@ class Main_user(Base):
     vendor = Column(String(64))
     os = Column(String(32))
     equip_type = Column(String(64))
-    asset = Column(Integer)
     operate = Column(String(32))
     bug_count = Column(Integer)
     weakpawd_count = Column(Integer)
@@ -221,18 +220,40 @@ def appQuery():
     session.close()
     return apps
 
+def tableQuery():
+    session = DBSession()
+    table_data = []
+    for item in session.query(Main_user.id, Main_user.ip, Main_user.port, Main_user.service_name, Main_user.os, Main_user.equip_type, Main_user.vendor, Main_user.operate).all():
+        table_data.append({
+            'id': item.id,
+            'ip': item.ip,
+            'port': item.port,
+            'service_name': item.service_name,
+            'os': item.os,
+            'equip_type': item.equip_type,
+            'vendor': item.vendor,
+            'operate': item.operate
+        })
+    return table_data
+    session.close()
+
 # print tagQuery()
 # print assetQuery()
 # print midQuery()
 # print appQuery()
+# print tableQuery()
 
-def data():
+# /api/controlcenter
+def ccenter_data():
     data = {}
     data['tags'] = tagQuery()
     data['assets'] = assetQuery()
     data['mids'] = midQuery()
     data['apps'] = appQuery()
-    # print data['mids']['port_data']
     return data
 
-# data()
+# /api/targetdetection
+def tdetect_data():
+    data = {}
+    data['table_data'] = tableQuery()
+    return data
